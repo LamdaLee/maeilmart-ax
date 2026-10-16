@@ -27,7 +27,7 @@ export function RunStep() {
       };
     });
 
-  const todo = !state.lastRun ? '"10건 실행"을 누르세요' : !fresh ? '조건이 바뀌었어요. 다시 실행하세요' : '넘김 조건을 고치고 다시 실행하세요';
+  const todo = !state.lastRun ? '"10건 실행"을 누르세요' : !fresh ? '조건이 바뀌었어요. 다시 실행하세요' : 'Hand\u2011off 조건을 고치고 다시 실행하세요';
 
   return (
     <StepShell step="run" lead="조건대로 10건을 흘려 보세요." todo={todo}>

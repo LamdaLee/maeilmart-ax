@@ -38,7 +38,7 @@ function ClauseEditor({ clause, dept, onChange }: { clause: Clause; dept: Depart
   );
 }
 
-/** 넘김 조건(한 절)과 자동 조건(최대 두 절) 편집. 모든 변경은 최신 상태를 받는 갱신으로 넣는다. */
+/** Hand-off 조건(한 절)과 자동 조건(최대 두 절) 편집. 모든 변경은 최신 상태를 받는 갱신으로 넣는다. */
 export function LogicForm({ only }: { only?: 'handoff' }) {
   const { state, update } = useProgress();
   const dept = useDept();
@@ -49,7 +49,7 @@ export function LogicForm({ only }: { only?: 'handoff' }) {
   return (
     <>
       <section className="rule-box">
-        <h3>① 먼저 보는 조건 — 넘김</h3>
+        <h3>{'① 먼저 보는 조건 — Hand\u2011off'}</h3>
         <div className="rule-line">
           <span>만약</span>
           <ClauseEditor
@@ -64,8 +64,8 @@ export function LogicForm({ only }: { only?: 'handoff' }) {
             value={state.handoff.to}
             onChange={(e) => update((s) => ({ ...s, handoff: { ...s.handoff, to: e.target.value as 'human' | 'data' } }))}
           >
-            <option value="human">사람에게 넘김</option>
-            <option value="data">예전 사례를 봄</option>
+            <option value="human">사람에게 에스컬레이션</option>
+            <option value="data">예전 사례 보기</option>
           </select>
         </div>
       </section>

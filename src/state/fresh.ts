@@ -53,7 +53,7 @@ export function fresh(): CourseState {
 }
 
 /**
- * 부서를 정하거나 바꾼다. 부서 뒤의 모든 답을 지우고 그 부서의 초기 규칙과 넘김 조건을 넣는다.
+ * 부서를 정하거나 바꾼다. 부서 뒤의 모든 답을 지우고 그 부서의 초기 규칙과 Hand-off 조건을 넣는다.
  * 같은 부서를 다시 고르면 아무것도 지우지 않는다.
  */
 export function withDepartment(s: CourseState, id: DepartmentId): CourseState {

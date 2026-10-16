@@ -25,7 +25,7 @@ export type Actor = 'Human' | 'Rule' | 'AI' | 'Data';
 
 export type StickerKind = 'repeat' | 'wait' | 'mistake' | 'humanOnly';
 
-/** 한 건이 흘러가는 줄. auto = 자동 처리, human = 사람에게 넘김, data = 예전 사례를 봄 */
+/** 한 건이 흘러가는 줄. auto = 자동 처리, human = 사람에게 에스컬레이션, data = 예전 사례를 봄 */
 export type Route = 'auto' | 'human' | 'data';
 
 export type ColumnMode = 'today' | 'later' | 'drop';
@@ -43,7 +43,7 @@ export interface AutoRule {
   clauses: Clause[];
 }
 
-/** 넘김 조건. 한 절이며 목적지는 사람 또는 예전 사례. */
+/** Hand-off 조건. 한 절이며 목적지는 사람 또는 예전 사례. */
 export interface Handoff {
   clause: Clause;
   to: 'human' | 'data';
@@ -72,7 +72,7 @@ export interface Case {
   facts: Record<string, string>;
   expects: Route;
   trap?: true;
-  /** 예전 사례로 넘겼을 때 보이는 비슷한 과거 */
+  /** 예전 사례로 Hand-off 했을 때 보이는 비슷한 과거 */
   past?: string;
   /** 자동 처리 + 어딘가에 AI가 있을 때 보이는 초안 */
   draft?: string;
@@ -114,7 +114,7 @@ export interface Department {
   initialHandoff: Handoff;
   /** 함정이 어긋났을 때 실행 화면에 보이는 힌트 */
   trapHint: string;
-  /** 힌트대로 고친 넘김 조건. 테스트가 이 값으로 10건 모두 맞는지 본다. */
+  /** 힌트대로 고친 Hand-off 조건. 테스트가 이 값으로 10건 모두 맞는지 본다. */
   fixedHandoff: Handoff;
   /** 과제 카드의 "넣을 자료" 기본 문장 */
   materials: string;
@@ -132,7 +132,7 @@ export interface TaskCard {
 }
 
 export interface RunRecord {
-  /** 실행 당시 부서·규칙·넘김·자료 수정·수행방식의 스냅샷 */
+  /** 실행 당시 부서·규칙·Hand-off·자료 수정·수행방식의 스냅샷 */
   key: string;
   routes: Record<string, Route>;
   counts: Record<Route, number>;

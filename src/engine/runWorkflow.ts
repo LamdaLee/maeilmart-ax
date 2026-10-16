@@ -45,7 +45,7 @@ export function ruleMatches(rule: AutoRule, facts: Record<string, string>): bool
 
 export const SPLIT_TRACE = '문장에서 의도를 나눴습니다';
 
-/** 한 건을 판정한다. 우선순위: 넘김 조건 → 자동 규칙 → 부서 기본 처리. */
+/** 한 건을 판정한다. 우선순위: Hand-off 조건 → 자동 규칙 → 부서 기본 처리. */
 export function decide(c: Case, input: RunInput): Pick<RunRow, 'route' | 'text' | 'trace'> {
   const { department, rule, handoff, actors } = input;
   const trace: string[] = [];
@@ -55,7 +55,7 @@ export function decide(c: Case, input: RunInput): Pick<RunRow, 'route' | 'text' 
   let text: string;
   if (clauseMatches(handoff.clause, c.facts)) {
     route = handoff.to;
-    text = handoff.to === 'human' ? '사람에게 넘깁니다' : '예전 사례를 봅니다';
+    text = handoff.to === 'human' ? '사람에게 에스컬레이션합니다' : '예전 사례를 봅니다';
     trace.push(handoff.to === 'human' ? `Human · ${text}` : `Data · ${text}`);
   } else if (ruleMatches(rule, c.facts)) {
     route = 'auto';

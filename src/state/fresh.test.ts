@@ -52,7 +52,7 @@ describe('hydrate', () => {
 });
 
 describe('withDepartment', () => {
-  it('부서의 초기 규칙과 넘김 조건을 넣는다', () => {
+  it('부서의 초기 규칙과 Hand-off 조건을 넣는다', () => {
     const stock = getDepartment('stock')!;
     const s = withDepartment(fresh(), 'stock');
     expect(s.rule).toEqual(stock.initialRule);

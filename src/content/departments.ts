@@ -94,7 +94,7 @@ const cs: Department = {
     ],
   },
   initialHandoff: { clause: { field: 'kind', value: '불량교환' }, to: 'human' },
-  trapHint: '화난 고객에게 자동 배송 안내가 나갔습니다. 요청보다 먼저 봐야 할 열이 있습니다. 말투를 넘김 조건에 넣어 보세요.',
+  trapHint: '화난 고객에게 자동 배송 안내가 나갔습니다. 요청보다 먼저 봐야 할 열이 있습니다. 말투를 Hand\u2011off 조건에 넣어 보세요.',
   fixedHandoff: { clause: { field: 'tone', value: '화남' }, to: 'human' },
   materials: '문의 문장, 주문 후 며칠, 요청 종류, 말투',
 };
@@ -180,7 +180,7 @@ const stock: Department = {
   fallback: { route: 'auto', text: '오늘은 안 시킵니다' },
   initialRule: { clauses: [{ field: 'tight', value: '예' }] },
   initialHandoff: { clause: { field: 'item', value: '신상품' }, to: 'human' },
-  trapHint: '비 오는 날 우산을 "안 시킨다"로 정했습니다. 남은 수량만으로는 모자랍니다. 우산은 예전 같은 날씨의 판매를 보도록 넘겨 보세요.',
+  trapHint: '비 오는 날 우산을 "안 시킨다"로 정했습니다. 남은 수량만으로는 모자랍니다. 우산은 Hand\u2011off 조건으로 예전 같은 날씨의 판매를 보게 해 보세요.',
   fixedHandoff: { clause: { field: 'item', value: '우산' }, to: 'data' },
   materials: '상품, 어제 판매, 남은 수량, 날씨, 예전 같은 날씨의 판매',
 };
@@ -261,7 +261,7 @@ const store: Department = {
   fallback: { route: 'auto', text: '계산대를 그대로 둡니다' },
   initialRule: { clauses: [{ field: 'rush', value: '예' }] },
   initialHandoff: { clause: { field: 'slot', value: '평일 오전' }, to: 'human' },
-  trapHint: '사정이 있는 직원을 계산대로 부르는 안내가 나갔습니다. 혼잡보다 먼저 사람이 봐야 하는 열이 있습니다. 직원 사정을 넘김 조건에 넣어 보세요.',
+  trapHint: '사정이 있는 직원을 계산대로 부르는 안내가 나갔습니다. 혼잡보다 먼저 사람이 봐야 하는 열이 있습니다. 직원 사정을 Hand\u2011off 조건에 넣어 보세요.',
   fixedHandoff: { clause: { field: 'personal', value: '있음' }, to: 'human' },
   materials: '시간, 대기 인원, 열린 계산대, 부를 수 있는 사람, 직원 사정 유무',
 };

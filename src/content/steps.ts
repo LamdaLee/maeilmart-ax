@@ -101,7 +101,7 @@ export const SLOTS: { id: SlotId; label: string }[] = [
   { id: 'split', label: '나누기' },
   { id: 'judge', label: '판단' },
   { id: 'act', label: '처리' },
-  { id: 'handoff', label: '사람에게 넘김' },
+  { id: 'handoff', label: '에스컬레이션' },
 ];
 
 export const SLOT_LABEL: Record<SlotId, string> = Object.fromEntries(SLOTS.map((s) => [s.id, s.label])) as Record<

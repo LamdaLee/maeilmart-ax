@@ -32,7 +32,7 @@ describe.each(DEPARTMENTS)('$name', (dept) => {
     expect(wrong[0].trap).toBe(true);
   });
 
-  it('힌트대로 넘김 조건을 고치면 10건 모두 기대와 맞는다', () => {
+  it('힌트대로 Hand-off 조건을 고치면 10건 모두 기대와 맞는다', () => {
     const result = runWorkflow(input(dept, { handoff: dept.fixedHandoff }));
     expect(result.trapOk).toBe(true);
     expect(result.allOk).toBe(true);
@@ -85,13 +85,13 @@ describe('우선순위와 추적 문장', () => {
   const cs = getDepartment('cs')!;
   const trap = cs.cases.find((c) => c.trap)!;
 
-  it('넘김 조건이 자동 규칙보다 먼저다', () => {
+  it('Hand-off 조건이 자동 규칙보다 먼저다', () => {
     const d = decide(trap, input(cs, { handoff: cs.fixedHandoff }));
     expect(d.route).toBe('human');
-    expect(d.trace).toContain('Human · 사람에게 넘깁니다');
+    expect(d.trace).toContain('Human · 사람에게 에스컬레이션합니다');
   });
 
-  it('넘김 조건이 비어 있으면 자동 규칙으로 간다', () => {
+  it('Hand-off 조건이 비어 있으면 자동 규칙으로 간다', () => {
     const d = decide(trap, input(cs, { handoff: { clause: { field: '', value: '' }, to: 'human' } }));
     expect(d.route).toBe('auto');
     expect(d.trace[d.trace.length - 1]).toBe(`Rule · ${cs.autoResult}`);

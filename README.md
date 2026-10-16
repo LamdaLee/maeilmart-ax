@@ -33,7 +33,7 @@ src/
     reference.ts           마지막에만 열리는 참고 답
     intro.ts               도입부 문구
   engine/
-    runWorkflow.ts         조건 일치 → 우선순위(넘김 → 자동 → 기본) → 추적 문장
+    runWorkflow.ts         조건 일치 → 우선순위(Hand-off → 자동 → 기본) → 추적 문장
   state/
     fresh.ts               fresh / hydrate(깨진 저장값 복구) / withDepartment
     gates.ts               canLeave · canEnter · firstIncomplete · runKey  ← 통과 판정은 여기 한곳
