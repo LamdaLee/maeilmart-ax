@@ -13,7 +13,9 @@ npm run dev     # http://localhost:5173
 npm run build   # 타입 검사 후 dist/ 정적 파일
 ```
 
-사진은 `public/images/`에 넣는다 (그 폴더의 README 참고).
+사진은 원본을 `photos/`에 넣고 `npm run images`를 실행한다.
+화면에 맞는 크기의 WebP(`public/images/`)와 흐린 미리보기(`src/content/photoPlaceholders.ts`)가 만들어진다.
+바탕화면 사진 오른쪽 아래 인장은 이때 아래 6%를 잘라 없앤다.
 
 ## 구조
 
@@ -23,6 +25,7 @@ src/
   content/
     steps.ts               16단계 id·제목·통과 뒤 보여 줄 이름, 다섯 칸, 수행방식 설명
     sites.ts               단계별 "웹페이지" (사이트 이름, 주소창 URL, 사진 경로)
+    photoPlaceholders.ts   npm run images 가 만드는 흐린 미리보기
     departments.ts         부서 3개: 장면 8, 칩 문장, 열, 10건, 초기 규칙, 함정 힌트
     friction.ts            스티커 개수와 최다 종류
     task.ts                앞 단계 문장으로 과제 카드 조립

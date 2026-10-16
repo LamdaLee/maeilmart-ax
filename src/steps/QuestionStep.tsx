@@ -1,5 +1,5 @@
 import { StepShell } from '../components/StepShell';
-import { PHOTOS } from '../content/sites';
+import { photoBackground } from '../content/sites';
 import { QUESTIONS } from '../content/steps';
 
 export function QuestionStep() {
@@ -9,7 +9,7 @@ export function QuestionStep() {
       lead="답은 아직 적지 않아요. 마지막 페이지에서 내 문장으로 답합니다."
       nextLabel="시작하기"
       hero={
-        <div className="home-hero" style={{ backgroundImage: `url(${PHOTOS.mart})` }}>
+        <div className="home-hero" style={{ backgroundImage: photoBackground('mart') }}>
           <div className="home-hero-text">
             <h1>매일마트</h1>
             <p>동네 마트 다섯 곳과 온라인 주문</p>

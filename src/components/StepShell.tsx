@@ -30,25 +30,19 @@ export function StepShell({ step, lead, todo, nextLabel, hero, children }: Props
 
   return (
     <>
-      <header className="site-head">
-        <span className="favicon" style={{ background: style.color }}>
-          {style.mark}
-        </span>
-        <span className="site-name">{site.name}</span>
-        {dept && <span className="site-crumb">· {dept.name}</span>}
-        <span className="site-step">
-          {index + 1} / {STEPS.length}
-        </span>
-      </header>
-      <div className="progress" aria-hidden>
-        {STEPS.map((s, i) => (
-          <span key={s.id} className={i < index ? 'done' : i === index ? 'now' : ''} title={s.short} />
-        ))}
-      </div>
-
       {hero}
 
       <main className="page">
+        <div className="page-meta">
+          <span className="favicon" style={{ background: style.color }}>
+            {style.mark}
+          </span>
+          {site.name}
+          {dept && ` · ${dept.name}`}
+          <span className="page-meta-step">
+            {index + 1} / {STEPS.length}
+          </span>
+        </div>
         <h1>{info.title}</h1>
         <p className="lead">{lead}</p>
         {children}

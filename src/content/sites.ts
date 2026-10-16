@@ -1,3 +1,4 @@
+import { PHOTO_PLACEHOLDERS } from './photoPlaceholders';
 import type { DepartmentId, StepId } from '../types';
 
 /*
@@ -48,10 +49,18 @@ export function siteUrl(step: StepId, dept: DepartmentId | null): string {
   return SITES[step].url.replace('{d}', dept ?? 'select');
 }
 
-/** public/images 아래에 넣을 사진. 파일이 없으면 CSS의 대체 배경이 보인다. */
-export const PHOTOS = {
-  wallpaper: '/images/wallpaper.jpg',
-  mart: '/images/mart.jpg',
-  office: '/images/office.jpg',
-  desk: '/images/desk.jpg',
+export type PhotoName = keyof typeof PHOTO_PLACEHOLDERS;
+
+/** npm run images 가 photos/ 의 원본을 줄여 만든 파일. 없으면 CSS의 대체 배경이 보인다. */
+export const PHOTOS: Record<PhotoName, string> = {
+  wallpaper: '/images/wallpaper.webp',
+  mart: '/images/mart.webp',
+  office: '/images/office.webp',
+  desk: '/images/desk.webp',
 };
+
+/** 큰 사진 위에, 먼저 도착하는 흐린 미리보기를 겹친 배경. 큰 사진이 오면 미리보기를 덮는다. */
+export function photoBackground(name: PhotoName): string {
+  const tiny = PHOTO_PLACEHOLDERS[name];
+  return tiny ? `url(${PHOTOS[name]}), url(${tiny})` : `url(${PHOTOS[name]})`;
+}

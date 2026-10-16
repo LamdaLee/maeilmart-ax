@@ -1,11 +1,24 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PHOTOS, SITE_STYLE, SITES, siteUrl } from '../content/sites';
+import { photoBackground, SITE_STYLE, SITES, siteUrl } from '../content/sites';
 import { STEPS, stepIndex } from '../content/steps';
 import { useProgress } from '../state/ProgressContext';
 import { canLeave } from '../state/gates';
 import type { StepId } from '../types';
 import { useStepNav } from './useStepNav';
+
+const WINDOW_KEY = 'maeilmart-ax-window';
+
+/** 저장된 선택이 없으면, 세로가 짧은 화면에서는 처음부터 화면 가득으로 연다. */
+function loadMaximized(): boolean {
+  try {
+    const saved = localStorage.getItem(WINDOW_KEY);
+    if (saved) return saved === 'max';
+  } catch {
+    // 읽지 못하면 화면 높이로만 정한다.
+  }
+  return window.innerHeight < 860;
+}
 
 /** 바탕화면 + 작업표시줄 + 브라우저 창. 단계가 바뀌면 다른 웹페이지로 넘어가듯 주소창과 탭이 바뀐다. */
 export function Desktop({ step, children }: { step: StepId; children: ReactNode }) {
@@ -19,6 +32,7 @@ export function Desktop({ step, children }: { step: StepId; children: ReactNode 
 
   const [loading, setLoading] = useState(true);
   const [menu, setMenu] = useState(false);
+  const [maximized, setMaximized] = useState(loadMaximized);
   const [toast, setToast] = useState<StepId | null>(null);
   const viewport = useRef<HTMLDivElement>(null);
   const wasPassed = useRef(passed);
@@ -45,6 +59,15 @@ export function Desktop({ step, children }: { step: StepId; children: ReactNode 
     return () => window.clearTimeout(t);
   }, [toast]);
 
+  useEffect(() => {
+    try {
+      localStorage.setItem(WINDOW_KEY, maximized ? 'max' : 'window');
+    } catch {
+      // 저장하지 못해도 창 크기만 기억 못 할 뿐이다.
+    }
+  }, [maximized]);
+
+  const index = stepIndex(step);
   const url = siteUrl(step, state.department);
   const [host, ...path] = url.split('/');
   const concept = toast ? STEPS[stepIndex(toast)].concept : undefined;
@@ -58,16 +81,24 @@ export function Desktop({ step, children }: { step: StepId; children: ReactNode 
   };
 
   return (
-    <div className="desktop" style={{ '--wallpaper-image': `url(${PHOTOS.wallpaper})` } as CSSProperties}>
+    <div
+      className={`desktop${maximized ? ' maximized' : ''}`}
+      style={{ '--wallpaper-image': photoBackground('wallpaper') } as CSSProperties}
+    >
       <div className="wallpaper" aria-hidden />
 
       <div className="screen">
         <div className="browser" role="application" aria-label="브라우저">
           <div className="browser-tabs">
-            <div className="window-dots" aria-hidden>
-              <span />
-              <span />
-              <span />
+            <div className="window-dots">
+              <span aria-hidden />
+              <span aria-hidden />
+              <button
+                className="window-max"
+                onClick={() => setMaximized((m) => !m)}
+                aria-label={maximized ? '창 크기로' : '화면 가득'}
+                title={maximized ? '창 크기로' : '화면 가득'}
+              />
             </div>
             <div className="browser-tab">
               <span className="favicon" style={{ background: style.color }}>
@@ -93,8 +124,16 @@ export function Desktop({ step, children }: { step: StepId; children: ReactNode 
                 {path.length > 0 && `/${path.join('/')}`}
               </span>
             </div>
+            <button className="nav-btn" onClick={() => setMaximized((m) => !m)} aria-label={maximized ? '창 크기로' : '화면 가득'}>
+              {maximized ? '⤡' : '⤢'}
+            </button>
           </div>
-          <div className={`loading-bar${loading ? ' is-loading' : ''}`} />
+          <div className="step-track" aria-label={`${STEPS.length}단계 중 ${index + 1}단계`}>
+            {STEPS.map((s, i) => (
+              <span key={s.id} className={i < index ? 'done' : i === index ? 'now' : ''} title={s.title} />
+            ))}
+            <div className={`loading-bar${loading ? ' is-loading' : ''}`} />
+          </div>
 
           <div className="viewport" ref={viewport}>
             <div key={step} className="page-enter">
