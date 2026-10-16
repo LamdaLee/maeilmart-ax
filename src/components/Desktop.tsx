@@ -76,7 +76,7 @@ export function Desktop({ step, children }: { step: StepId; children: ReactNode 
     setMenu(false);
     if (window.confirm('처음부터 다시 할까요? 지금까지 적은 내용이 모두 지워집니다.')) {
       reset();
-      navigate('/s/question');
+      navigate('/intro/0');
     }
   };
 
@@ -156,6 +156,7 @@ export function Desktop({ step, children }: { step: StepId; children: ReactNode 
 
       {menu && (
         <div className="taskbar-menu">
+          <button onClick={() => navigate('/intro/1')}>소개 다시 보기</button>
           <button onClick={restart}>처음부터 다시 하기</button>
           <button onClick={() => setMenu(false)}>닫기</button>
         </div>

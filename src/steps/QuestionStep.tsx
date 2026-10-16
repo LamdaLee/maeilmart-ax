@@ -6,8 +6,8 @@ export function QuestionStep() {
   return (
     <StepShell
       step="question"
-      lead="답은 아직 적지 않아요. 마지막 페이지에서 내 문장으로 답합니다."
-      nextLabel="시작하기"
+      lead="출근 완료. 오늘 가져갈 질문을 한 번 더 보고, 부서를 고르러 갑니다."
+      nextLabel="부서 고르기"
       hero={
         <div className="home-hero" style={{ backgroundImage: photoBackground('mart') }}>
           <div className="home-hero-text">

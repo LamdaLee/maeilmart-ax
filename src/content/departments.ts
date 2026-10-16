@@ -102,7 +102,7 @@ const cs: Department = {
 const stock: Department = {
   id: 'stock',
   name: '재고발주',
-  todayWork: '오늘 발주할 상품을 정하는 일',
+  todayWork: '발주할 상품을 정하는 일',
   summary: '발주가 요일에 묶여 있습니다. 금요일 오전, 주말 장사를 위해 무엇을 시킬지 정합니다.',
   scenes: [
     { id: 'st-s1', time: '08:30', text: '발주 담당이 창고를 돌며 남은 수량을 종이에 적습니다. 상품 120가지, 매주 같은 순서입니다.' },
