@@ -1,8 +1,8 @@
 // npm run images 가 만든다. 직접 고치지 않는다.
 // 큰 사진이 오기 전에 바로 보이는 흐린 미리보기 (가로 24px).
 export const PHOTO_PLACEHOLDERS: Record<'wallpaper' | 'mart' | 'office' | 'desk', string> = {
-  wallpaper: "",
-  mart: "",
-  office: "",
-  desk: "",
+  wallpaper: "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAADQBACdASoYAA0APu1iqU2ppaQiMAgBMB2JbACdMoMYPX+z/4Dz96KJqBLp6YysAAD+kbpl7X2w1dFLieEgygF3SCGPsCeH1gLryRAeGs3Cvi9io5VpV3zGzlkp6/QnkqmOxSpzXM/zuAMTGMLj0IMZmVchCNKynBPJY2FKwimgAA==",
+  mart: "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAADwAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JYwCdACB7X9vuevzDx72AAOAL+mFVffH4i0PKoKXZz25NlGCDENKDsMURDd5bUY372API2o2ibwzUIFXoDnftRATrSNRTUKVg/PU++GqsPqABTewU+GWeQ4GCjBjt45pZb4ZxEYvWUP9dtVvOkPY2AAA=",
+  office: "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAACwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZACw7ywTngvMXNZvDwuq+RQCWwAAAP5hFpYuzT8nDqn1I955B08ummKd7JDvTeglq1aR3DaY5XvhOLJHFnw+AkRHw0WqATWr3HTCinFnqdCNNi+nE5Ev4EX52m7jvV03cDCnV0waAsTkjoW76Q/LtsYGortFmD0Iv4PcstSynkCpEqtTj8EPDaZ6ZnNV8nyH+Seg3nDPfPdEn42UITExSgQx5zQof2Io4AAA",
+  desk: "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAwBACdASoYABAAPu1iqU2ppaOiMAgBMB2JZwAIEAMgK8AxE02r3WZ/boAA9jp+c6soRzuHLVMTyR+UKGvDFf6zGFrItKdFZXjXZU7UHbAhS8GH8JQskuQ8Yc8RAlszsZUHGjH75xbRW+eZEeWNTRWBgKPWMRgCF7iPdZeYYCXJJtQcWFWlCYJUaLU5vRQAAAA=",
 };
