@@ -69,7 +69,8 @@ export function ProblemStep() {
               disabled={!enough || !top.includes(k.id)}
               onClick={() => update((s) => ({ ...s, problem: chip }))}
             >
-              [{k.label}] {chip}
+              <span className="chip-tag">{k.label}</span>
+              {chip}
             </button>
           )),
         )}

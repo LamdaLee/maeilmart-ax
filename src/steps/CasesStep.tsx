@@ -34,12 +34,14 @@ export function CasesStep() {
                     onChange={(e) => setDraft(e.target.value)}
                   />
                 ) : (
-                  <div className={edited ? 'edited' : ''}>{edited ?? c.sentence}</div>
+                  <div className={`inbox-text${edited ? ' edited' : ''}`}>{edited ?? c.sentence}</div>
                 )}
                 <div className="inbox-facts">
-                  {Object.entries(c.facts)
-                    .map(([k, v]) => `${fieldLabel(k)}: ${v}`)
-                    .join(' · ')}
+                  {Object.entries(c.facts).map(([k, v]) => (
+                    <span key={k}>
+                      {fieldLabel(k)}: {v}
+                    </span>
+                  ))}
                 </div>
               </div>
               {c.trap ? (

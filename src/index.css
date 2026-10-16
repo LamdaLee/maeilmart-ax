@@ -582,6 +582,17 @@ button:disabled {
   font-weight: 700;
 }
 
+.chip-tag {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: var(--paper-2);
+  font-size: 0.75rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
 .chip:disabled {
   opacity: 0.4;
 }
@@ -622,51 +633,75 @@ button.card:hover {
   font-size: 0.9rem;
 }
 
+/* 다섯 칸은 위에서 아래로 흐르는 줄. 왼쪽에 칸 이름, 오른쪽에 문장. 줄 사이 화살표가 흐름을 보여 준다. */
 .flow {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .slot {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 14px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 16px;
+  padding: 12px 18px;
   border: 2px solid var(--line);
   border-radius: var(--radius);
   background: var(--paper);
-  min-width: 0;
+  text-align: left;
+}
+
+.slot + .slot {
+  margin-top: 20px;
+}
+
+.slot + .slot::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 29px;
+  width: 2px;
+  height: 18px;
+  background: var(--line-strong);
 }
 
 .slot-name {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
+  gap: 8px;
+  font-size: 0.85rem;
   font-weight: 800;
-  color: var(--muted);
+  color: var(--ink-2);
 }
 
 .slot-num {
+  flex: none;
   display: inline-grid;
   place-items: center;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: var(--ink);
   color: #fff;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
 }
 
 .slot-text {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+}
+
+.slot-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
 }
 
 .slot .input {
-  min-height: 96px;
-  font-size: 0.9rem;
-  padding: 10px 12px;
+  min-height: 52px;
+  padding: 10px 14px;
 }
 
 .slot .chips {
@@ -674,7 +709,7 @@ button.card:hover {
 }
 
 .slot .chip {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   text-align: left;
 }
 
@@ -709,8 +744,13 @@ button.slot.selected {
   gap: 24px;
 }
 
-.two-col .flow {
+.two-col .slot {
   grid-template-columns: 1fr;
+  row-gap: 6px;
+}
+
+.two-col .slot + .slot::before {
+  left: 29px;
 }
 
 /* ------------------------------------------------------------ 장면 피드 */
@@ -1196,9 +1236,12 @@ button.slot.selected {
     padding-left: 16px;
     padding-right: 16px;
   }
-  .flow,
-  .two-col {
+  .two-col,
+  .slot {
     grid-template-columns: 1fr;
+  }
+  .slot {
+    row-gap: 6px;
   }
   .post {
     grid-template-columns: 1fr;
@@ -1524,6 +1567,10 @@ button.slot.selected {
   color: var(--ink-2);
 }
 
+.journey p {
+  font-size: 0.9rem;
+}
+
 .journey {
   list-style: none;
   margin: 0 0 28px;
@@ -1793,5 +1840,99 @@ button.slot.selected {
   }
   .intro-dots {
     display: none;
+  }
+}
+
+/* ------------------------------------------------------------ 줄바꿈
+ * 한국어는 어절 단위로만 끊고(keep-all), 마지막 줄에 한 어절만 남지 않게 한다.
+ * 제목·칩·카드처럼 짧은 글은 줄 길이를 고르게(balance), 문단은 끝줄 외톨이만 막는다(pretty).
+ */
+h1,
+h2,
+h3,
+.lead,
+.question,
+.intro-title,
+.cover-title,
+.big-questions p,
+.toast-name,
+.hero-text {
+  text-wrap: balance;
+}
+
+/* 짧은 안내 문구는 글에 적어 둔 줄바꿈(\n)을 그대로 쓴다. 어절 중간이 아니라 구절 사이에서 끊기 위해서다. */
+.intro-card p,
+.journey p,
+.tips p,
+.cover-body,
+.intro-body,
+.toast-line {
+  white-space: pre-line;
+}
+
+.notice {
+  text-wrap: balance;
+}
+
+p,
+li,
+dd,
+.chip,
+.slot-text,
+.card p,
+.then,
+.post-text,
+.toast-line,
+td.wrap,
+.inbox-text,
+.field-label {
+  text-wrap: pretty;
+}
+
+/* "요청: 배송"처럼 이름과 값은 한 덩어리로 둔다 */
+.inbox-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.inbox-facts span,
+.nowrap {
+  white-space: nowrap;
+}
+
+.summary-slot {
+  margin-bottom: 6px;
+}
+
+.summary-slot-head {
+  white-space: nowrap;
+  font-weight: 800;
+  margin-right: 8px;
+}
+
+@media (max-width: 860px) {
+  .inbox-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .inbox-item > :last-child {
+    justify-self: start;
+  }
+  .foot-status {
+    display: none;
+  }
+  .page-foot {
+    justify-content: space-between;
+  }
+  .big-questions p {
+    gap: 12px;
+    padding: 20px 16px;
+    font-size: 1.15rem;
+  }
+  .big-questions span {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
   }
 }

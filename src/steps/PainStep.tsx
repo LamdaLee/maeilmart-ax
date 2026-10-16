@@ -19,7 +19,7 @@ export function PainStep() {
             <span className="slot-name">
               <span className="slot-num">{i + 1}</span>
               {slot.label}
-              {state.painSlot === slot.id && <span className="pain-tag">아픈 칸</span>}
+              {state.painSlot === slot.id && <span className="pain-tag">Pain point</span>}
             </span>
             <span className="slot-text">{state.asis[slot.id]}</span>
           </button>

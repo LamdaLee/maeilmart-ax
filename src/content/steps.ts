@@ -16,19 +16,22 @@ export const STEPS: StepInfo[] = [
     id: 'asis',
     title: '지금 흐르는 일',
     short: '지금 흐름',
-    concept: { name: 'As-is Process', line: '방금 채운 다섯 칸이 지금 일이 실제로 지나가는 순서, As-is Process입니다.' },
+    concept: { name: 'As-is Process', line: '방금 채운 다섯 칸이 지금 일이 실제로 지나가는 순서, As\u2011is Process입니다.' },
   },
   {
     id: 'problem',
-    title: '아픈 곳 찾기',
-    short: '아픈 곳',
-    concept: { name: '마찰 찾기', line: '장면에서 반복·기다림·실수·사람 병목을 표시한 일, 이것이 마찰 찾기입니다.' },
+    title: '마찰 찾기',
+    short: '마찰',
+    concept: {
+      name: '마찰 찾기',
+      line: '반복, 기다림, 실수, 사람 병목처럼\n일이 걸리는 곳을 표시하는 일입니다.',
+    },
   },
   {
     id: 'pain',
-    title: '아픈 칸 정하기',
-    short: '아픈 칸',
-    concept: { name: 'Pain point', line: '문제 문장을 흐름의 한 칸에 붙이면, 그 칸이 Pain point입니다.' },
+    title: 'Pain point 정하기',
+    short: 'Pain point',
+    concept: { name: 'Pain point', line: '흐름 가운데 문제가 생기는 한 칸입니다. 이 칸을 고치는 것이 오늘의 과제가 됩니다.' },
   },
   {
     id: 'data',
@@ -49,7 +52,7 @@ export const STEPS: StepInfo[] = [
     id: 'improve',
     title: '앞으로의 흐름',
     short: '앞으로',
-    concept: { name: 'To-Be Process', line: '같은 다섯 칸에 적은 앞으로의 흐름이 To-Be Process입니다.' },
+    concept: { name: 'To-Be Process', line: '같은 다섯 칸에 적은 앞으로의 흐름이 To\u2011Be Process입니다.' },
   },
   {
     id: 'actors',
@@ -110,7 +113,7 @@ export const STICKERS: { id: StickerKind; label: string }[] = [
   { id: 'repeat', label: '반복' },
   { id: 'wait', label: '기다림' },
   { id: 'mistake', label: '실수' },
-  { id: 'humanOnly', label: '사람만' },
+  { id: 'humanOnly', label: '사람 병목' },
 ];
 
 export const ACTORS: { id: Actor; line: string }[] = [

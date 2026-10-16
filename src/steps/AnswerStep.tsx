@@ -65,8 +65,11 @@ export function AnswerStep() {
           <dt>앞으로의 흐름</dt>
           <dd>
             {SLOTS.map((slot) => (
-              <div key={slot.id}>
-                <strong>{slot.label}</strong> · {state.actors[slot.id]} · {state.tobe[slot.id]}
+              <div key={slot.id} className="summary-slot">
+                <span className="summary-slot-head">
+                  {slot.label} · {state.actors[slot.id]}
+                </span>
+                {state.tobe[slot.id]}
               </div>
             ))}
           </dd>

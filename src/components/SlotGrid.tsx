@@ -18,11 +18,12 @@ export function SlotGrid({ values, onChange, chips, pain, className = '' }: Prop
           <div className="slot-name">
             <span className="slot-num">{i + 1}</span>
             {slot.label}
-            {pain === slot.id && <span className="pain-tag">아픈 칸</span>}
+            {pain === slot.id && <span className="pain-tag">Pain point</span>}
           </div>
           {onChange ? (
-            <>
+            <div className="slot-body">
               <textarea
+                rows={1}
                 className="input"
                 aria-label={slot.label}
                 value={values[slot.id]}
@@ -38,7 +39,7 @@ export function SlotGrid({ values, onChange, chips, pain, className = '' }: Prop
                   ))}
                 </div>
               )}
-            </>
+            </div>
           ) : (
             <div className="slot-text">{values[slot.id] || '—'}</div>
           )}

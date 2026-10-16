@@ -71,7 +71,7 @@ describe('실행 통과', () => {
 });
 
 describe('기타 단계', () => {
-  it('아픈 곳: 스티커 네 개와 여덟 글자 문장', () => {
+  it('마찰 찾기: 스티커 네 개와 여덟 글자 문장', () => {
     const s = { ...base(), stickers: { 'cs-s1': 'repeat', 'cs-s2': 'repeat', 'cs-s3': 'wait' } as CourseState['stickers'], problem: '배송 답을 매번 다시 쓴다' };
     expect(canLeave('problem', s)).toBe(false);
     expect(canLeave('problem', { ...s, stickers: { ...s.stickers, 'cs-s4': 'mistake' } })).toBe(true);
