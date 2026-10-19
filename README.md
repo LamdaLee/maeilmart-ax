@@ -10,9 +10,12 @@
 ```bash
 npm install
 npm test        # 엔진·부서 데이터·저장값 복구·통과 판정 테스트
-npm run dev     # http://localhost:5173
-npm run build   # 타입 검사 후 dist/ 정적 파일
+npm run dev     # http://localhost:5173/maeilmart-ax/
+npm run build   # 타입 검사 후 dist/maeilmart-ax/ 정적 파일
 ```
+
+모든 주소는 `/maeilmart-ax/` 아래에 있다. shaula.kr/maeilmart-ax 가 이 배포를 그대로 비춰 주기 때문이다.
+Vercel 주소의 맨 앞(`/`)은 `/maeilmart-ax/`로 넘어간다(`vercel.json`).
 
 사진은 원본을 `photos/`에 넣고 `npm run images`를 실행한다.
 화면에 맞는 크기의 WebP(`public/images/`)와 흐린 미리보기(`src/content/photoPlaceholders.ts`)가 만들어진다.

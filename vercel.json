@@ -1,0 +1,9 @@
+{
+  "outputDirectory": "dist",
+  "redirects": [
+    { "source": "/", "destination": "/maeilmart-ax/", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/maeilmart-ax/:path*", "destination": "/maeilmart-ax/index.html" }
+  ]
+}
