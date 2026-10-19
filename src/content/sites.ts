@@ -53,10 +53,10 @@ export type PhotoName = keyof typeof PHOTO_PLACEHOLDERS;
 
 /** npm run images 가 photos/ 의 원본을 줄여 만든 파일. 없으면 CSS의 대체 배경이 보인다. */
 export const PHOTOS: Record<PhotoName, string> = {
-  wallpaper: '/images/wallpaper.webp',
-  mart: '/images/mart.webp',
-  office: '/images/office.webp',
-  desk: '/images/desk.webp',
+  wallpaper: `${import.meta.env.BASE_URL}images/wallpaper.webp`,
+  mart: `${import.meta.env.BASE_URL}images/mart.webp`,
+  office: `${import.meta.env.BASE_URL}images/office.webp`,
+  desk: `${import.meta.env.BASE_URL}images/desk.webp`,
 };
 
 /** 큰 사진 위에, 먼저 도착하는 흐린 미리보기를 겹친 배경. 큰 사진이 오면 미리보기를 덮는다. */

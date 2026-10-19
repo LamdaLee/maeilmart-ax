@@ -34,7 +34,7 @@ function Resume() {
 
 export function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <Routes>
         <Route path="/intro/:slide" element={<Intro />} />
         <Route path="/intro" element={<Navigate to="/intro/0" replace />} />
